@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<form name="myForm" action="demo_form.php" onsubmit="return validateForm()" method="post">
+			名字: <input type="text" name="fname">
+			<input type="submit" value="提交">
+				</form>
+	</body>
+
+</html>
+<script type="text/javascript">
+	function validateForm() {
+		var x = document.forms["myForm"]["fname"].value;
+		if(x == null || x == "") {
+			alert("需要输入名字。");
+			console.log(navigator)
+			return false;
+		}
+	}
+</script>

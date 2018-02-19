@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//call apply bind
+	//call apply
+	//1 指定函数中的this
+	//2 调用函数（bind在此是返回函数）
+	function test(){
+		this.name = "abc";
+	}
+	var obj = {}
+	//test.call(obj);
+	//console.log(obj.name);
+	test.bind(obj)();
+	console.log(obj.name);
+	var time = Date.now();
+	console.log(time);
+	
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			#a p{text-align:justify;text-align-last: justify;}
+		</style>
+	</head>
+	<body>
+		<input type="text" /><button>点击</button>
+		<div style="width:200px;height:200px;background: red;"></div>
+		<div id="a">
+			<p>我是是是是</p>
+		    <p>我是</p>
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+   $(function(){
+   	
+   	
+   	$('button').click(function(){
+   		var val = $('input').val()
+   		getInfo(val,false,getage);
+   		function getage(data){
+   			$('input').val(data.info.age) 
+   		   			
+   		}
+   	})
+   	$('div').click(function(){
+   		getInfo("",true,getName);
+   		function getName(data){
+   			$('input').val(data.info.name) 
+   		   			
+   		}
+   		
+   	})
+   	function getInfo(name,is,callback){
+   		$.ajax({
+   		
+   		type:"get",
+   		url:"http://www.easy-mock.com/mock/597d6830a1d30433d841aea7/index/index",
+   		async:is,
+   		data:name,
+   		dataType:"json",
+   		success:function(data){
+   			callback(data)
+   		}   		
+   	});
+   	}
+   	
+   })
+</script>
+	
+

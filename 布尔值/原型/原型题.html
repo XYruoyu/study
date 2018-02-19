@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	// 假设有一个父类对象：“动物”，拥有以下属性：腿的数量，是否有尾巴；
+	//有另外一个子对象猫，拥有动物对象的属性，并增加一个属性为name：‘ketty’，最后再增加一个方法
+	//这个方法返回动物的名称+腿的数量+是否有尾巴的描述，请使用js原型链继承来创建以上两个对象。
+	function Animal(){
+	}
+	Animal.prototype.leg = 4;
+	Animal.prototype.trail = true;
+	
+	function Cat(name){
+		this.name = "ketty";
+		this.say = function (){
+			console.log(this.name +this.leg+this.trail)
+		}
+	}
+	Cat.prototype = new Animal();
+	var ketty = new Cat("ketty");
+	ketty.say();
+	
+</script>

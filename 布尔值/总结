@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	function run(a){
+		if(a){
+			alert("zhen");
+		}else{
+			alert('f')
+		}
+	}
+	run(7);
+	var arr = [1,2,3,4,5];
+	var arr1 = [];
+	for (var i = 0;i < arr.length;i++){
+
+		if(i-2<0?i-2==arr.length-2:i){
+		arr[i-2] = arr[i];
+			
+		}
+	};
+	console.log(arr);
+</script>
