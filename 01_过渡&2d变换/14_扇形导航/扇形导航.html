@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>扇形导航</title>
+		<style>
+			#menu{
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				width: 50px;
+				height: 50px;
+			}
+			
+			#menu_list{
+				position: relative;
+				width: 42px;
+				height: 42px;
+				margin: 4px;
+			}
+			#menu_list img{
+				position:absolute;
+				left:0;
+				top:0;
+				border-radius:21px;
+			}
+			
+			#home{
+				position: absolute;
+				left: 0;
+				top:0 ;
+				width: 50px;
+				height: 50px;
+				background: url(img/home.png);
+				border-radius: 50%;
+				transition:1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu">
+			<div id="menu_list">
+				<img src="img/clos.png"/>
+				<img src="img/full.png"/>
+				<img src="img/open.png"/>
+				<img src="img/prev.png"/>
+				<img src="img/refresh.png"/>
+			</div>
+			<div id="home"></div>
+		</div>
+	</body>
+	<script>
+		window.onload=function(){
+			var homeNode =document.getElementById("home");
+			var aImg=document.getElementById("menu_list").getElementsByTagName("img");
+			
+			for(var i=0;i<aImg.length;i++){
+				aImg[i].onclick=function()
+				{
+					this.style.transition="0.5s linear";
+					this.style.transform="scale(2) rotate(-720deg)";
+					this.style.opacity=0.1;
+					this.addEventListener("transitionend",end);
+				};
+			}
+			function end(){
+				this.style.transition="0.1s";
+				this.style.transform="scale(1) rotate(-720deg)";
+				this.style.opacity=1;
+				this.removeEventListener("transitionend",end);
+			}
+			
+			
+			var flag =true;
+			var dis =-120;
+			homeNode.onclick=function(){
+				if(flag){
+					this.style.transform="rotate(-360deg)";
+					
+					for(var i=0;i<aImg.length;i++){
+						aImg[i].style.transition="0.5s "+i*100+"ms";
+						aImg[i].style.left =getPoint(dis,90/4*i).left +"px";
+						aImg[i].style.top = getPoint(dis,90/4*i).top +"px";
+						aImg[i].style.transform="rotate(-720deg)";
+					}
+				}else{
+					this.style.transform="rotate(0)";
+					
+					for(var i=0;i<aImg.length;i++){
+						aImg[i].style.transition="0.5s "+(aImg.length-1-i)*100+"ms";
+						aImg[i].style.left=0+"px";
+						aImg[i].style.top=0+"px";
+						aImg[i].style.WebkitTransform="rotate(0deg)";
+					}
+				}
+				flag=!flag;
+			}
+			
+			function getPoint(dis,deg){
+				var left =Math.round(Math.sin(deg/180*Math.PI)*dis);
+				var top =Math.round(Math.cos(deg/180*Math.PI)*dis);
+				
+				return {left:left,top:top};
+			}
+			
+		}
+	</script>
+</html>

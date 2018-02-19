@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>03_基础事件</title>
+<!--	
+	(DOM0)1.obj.onclick = fn;	
+		
+	(DOM2)2.ie :obj.attachEvent(事件名称，事件函数);
+	       	标准:obj.addEventListener(事件名称，事件函数，是否捕获);
+	       	
+	    1. DOM2,不会存在前后覆盖问题
+		2. DOM2,在chrome的模拟器下可以一直识别
+-->
+<style>
+.box {
+	width: 100px;
+	height: 100px;
+	background: red;
+}
+</style>
+<script>
+window.onload = function () {
+	var box = document.querySelectorAll(".box");
+	box[0].onclick=function(){
+		console.log("dom0_click_1");
+	}
+	box[0].onclick=function(){
+		console.log("dom0_click_2");
+	}
+	box[0].onclick=function(){
+		console.log("dom0_click_3");
+	}
+	
+	
+	box[1].addEventListener("click",function(){
+		console.log("dom2_click_1");
+	})
+	box[1].addEventListener("click",function(){
+		console.log("dom2_click_2");
+	})
+	box[1].addEventListener("click",function(){
+		console.log("dom2_click_3");
+	})
+};
+</script>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box" style="background: gray;"></div>
+</body>
+</html>

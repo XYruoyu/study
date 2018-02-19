@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>03_事件默认行为</title>
+		<style type="text/css">
+			#test{
+				width: 200px;
+				height: 200px;
+				background: pink;
+				margin: 200px auto;
+			}
+		</style>
+		<script type="text/javascript">
+			document.oncontextmenu=function(ev){
+				var e=ev||event;
+				e.preventDefault();
+			}
+		
+			window.onload=function(){
+				var div =document.querySelector("#test");
+				div.oncontextmenu=function(ev){
+					var e=ev||event;
+//					e.preventDefault();
+					e.stopPropagation();
+				}
+	
+//				var wapper =document.querySelector("#wapper");
+//				wapper.oncontextmenu=function(ev){
+//					var e=ev||event;
+//					e.preventDefault();
+//					e.stopPropagation();
+//				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<!--<div id="wapper">-->
+			<div id="test"></div>
+		<!--</div>-->
+	</body>
+</html>

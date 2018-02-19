@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>02_viewport</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<style>
+			*{margin: 0;padding: 0;}
+			.box{width:200px;height:200px;background:pink;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			123456789
+		</div>
+		<script>
+			alert(document.documentElement.clientWidth);
+			
+			console.log(document.documentElement.clientWidth +"<br/>");
+			console.log(window.innerWidth+"<br/>");
+			console.log(window.outerWidth+"<br/>");
+			console.log(screen.width+"<br/>");
+		</script>
+	</body>
+</html>

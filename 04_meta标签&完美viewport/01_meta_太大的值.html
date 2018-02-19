@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<!--
+			width：设置布局视口的宽度为特定的值
+			init-scale：设置页面的初始缩放程度和布局视口的宽度
+			minimum-scale：设置了用户可缩小的程度
+			maximum-scale：设置了用户可放大的程度
+			user-scalable：是否阻止用户进行缩放
+			height：兼容性极差，几乎没有浏览器对它进行实现，我们可以忽略它
+		-->
+		<title></title>
+	</head>
+	<body>
+		<div style="width: 2000px;">
+			test
+		</div>
+	</body>
+	<script type="text/javascript">
+		console.log(document.documentElement.clientWidth);
+	</script>
+</html>

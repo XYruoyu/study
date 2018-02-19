@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body style="height: 3000px;">
+		<div id="test">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		console.log(document.documentElement.clientWidth);//（最干净的那个视口）
+		console.log(window.innerWidth);//视口（包括滚动条的尺寸）
+		console.log(window.outerWidth);//窗口
+		console.log(screen.width);//视口（包括滚动条的尺寸） 它在我们的移动端返回的不一定是我们屏幕的分辨率，
+									//它可能返回我们屏幕尺寸
+	</script>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>01_viewport</title>
+			<!--
+				1.说明layout viewport和visual viewport的关系
+				2.layout viewport默认宽度大部分是980px(css像素)
+			-->
+		<style>
+		*{margin: 0;padding: 0;}
+		.box{width:490px;height:200px;background:pink;}
+		/*.box{width:980px;height:200px;background:pink;}*/
+		/*.box{width:990px;height:200px;background:pink;}*/
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			123456789
+		</div>
+		<script>
+			alert(document.documentElement.clientWidth);//layout
+			
+			
+			console.log(document.documentElement.clientWidth +"<br/>");
+			console.log(window.innerWidth+"<br/>");
+			console.log(window.outerWidth+"<br/>");
+			console.log(screen.width+"<br/>");
+
+		</script>
+	</body>
+</html>
