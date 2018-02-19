@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+
+    /*
+    1. 模板字符串 : 简化字符串的拼接
+        1). 模板字符串必须用``
+        2). 变化的部分使用${xxx}定义
+
+    2. contains(str) : 判断是否包含指定的字符串
+    3. startsWith(str) : 判断是否以指定字符串开头
+    4. endsWith(str) : 判断是否以指定字符串结尾
+    5. repeat(count) : 重复指定次数
+     */
+
+    let s = 'www.atguigu.com';
+    console.log(s.indexOf('at')); //ES5
+
+    console.log(s.contains('guigu'));
+    console.log(s.contains('guigui'));
+
+    console.log(s.startsWith('ww'));
+    console.log(s.startsWith('wc'));
+
+    console.log(s.repeat(2));
+
+    const user = {
+        name : 'Tom',
+        age : 12
+    };
+    console.log('我叫'+user.name+', 10年后年方'+(user.age+10));
+    console.log(`我叫${user.name}, 10年后年方${user.age+10}`);
+</script>
+</html>

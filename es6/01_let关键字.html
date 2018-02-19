@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01_let关键字</title>
+</head>
+<body>
+
+<button>测试1</button>
+<br>
+<button>测试2</button>
+<br>
+<button>测试3</button>
+<br>
+
+<script type="text/javascript">
+  /*
+  * 作用:
+    * 与var类似, 用于声明一个变量
+  * 特点:
+    * 在块作用域内有效
+    * 不能重复声明
+    * 不会预处理, 不存在提升
+  * 应用:
+    * 循环遍历加监听
+    * 使用let取代var是趋势
+   */
+
+  console.log(a1);
+  //不会预处理, 不存在提升
+  //console.log(a2); //Uncaught ReferenceError: a2 is not defined
+
+  if (true) {
+    var a1 = 'Tom';
+    let a2 = 'JACK';
+
+    var a1 = 'TOM2';
+    //不能重复声明
+    //let a2 = 'JACK2'; //Uncaught SyntaxError: Identifier 'a2' has already been declared
+    console.log(a2);
+  }
+  console.log(a1);
+  //只在块作用域内有效
+  //console.log(a2); //Uncaught ReferenceError: a2 is not defined
+
+  //应用: 循环遍历加监听
+  var btns = document.getElementsByTagName('button');
+  for (let i = 0, length = btns.length; i < length; i++) {
+    btns[i].onclick = function () {
+      alert('点击的是第' + (i + 1) + "个button");
+    };
+  }
+</script>
+</body>
+
+</html>

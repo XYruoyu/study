@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+	</head>
+	<body>
+		<a href="http://www.baidu.com">ddddddd</a><br />
+		<a href="www.baidu.com">ddddddd</a><br />
+		<a href="www.baidu.com">ddddddd</a><br />
+		<a href="www.baidu.com">ddddddd</a><br />
+		<a href="www.baidu.com">ddddddd</a><br />
+		<a href="www.baidu.com">ddddddd</a><br />
+		<a href="www.baidu.com">ddddddd</a><br />
+	</body>
+</html>
+<script type="text/javascript">
+	document.addEventListener('touchstart',function(ev){
+		ev.preventDefault();
+	})
+	var a = document.getElementsByTagName('a');
+	for(var i =0;i < a.length;i++){
+		a[i].addEventListener("touchmove",function(){
+			if(!this.move){
+				this.move = true;
+			}
+		})
+		a[i].addEventListener("touchend",function(){
+			if(!this.move){
+			window.location.href = a.href;
+				
+			}
+
+		})
+	}
+</script>
