@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新轮播图</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <style type="text/css">
+        #wrap{
+            position:relative;
+            width: 620px;
+            height: 420px;
+            margin: 100px auto;
+            background: yellowgreen;
+            overflow: hidden;
+        }
+        #prev{
+            position: absolute;
+            top: 40%;
+            left: 20px;
+            font-size:80px;
+            color: #fff;
+            opacity: 0.7;
+        }
+        #next{
+            position: absolute;
+            top: 40%;
+            right:20px;
+            font-size:80px;
+            color: #fff;
+            opacity: 0.7;
+        }
+        #ul_img{
+            position: absolute;
+            width: 6120px;
+            animation: 1s;
+        }
+        #ul_img li{
+            margin: 10px 0 10px 10px;
+            float: left;
+        }
+        /*包含所有圆点按钮的<div>*/
+        #buttons {
+            position: absolute;
+            height: 10px;
+            width: 100px;
+            z-index: 2;
+            bottom: 20px;
+            left: 250px;
+        }
+        /*所有的圆点<span>*/
+        #buttons span {
+            cursor: pointer;
+            float: left;
+            border: 1px solid #fff;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            margin-right: 5px;
+        }
+        /*第一个<span>*/
+
+        #buttons .on {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <section id="wrap">
+        <ul id="ul_img">
+            <li><img src="img/1.jpg"/></li>
+            <li><img src="img/2.jpg"/></li>
+            <li><img src="img/3.jpg"/></li>
+            <li><img src="img/4.jpg"/></li>
+            <li><img src="img/5.jpg"/></li>
+            <li><img src="img/1.jpg"/></li>
+            <li><img src="img/2.jpg"/></li>
+            <li><img src="img/3.jpg"/></li>
+            <li><img src="img/4.jpg"/></li>
+            <li><img src="img/5.jpg"/></li>
+        </ul>
+        <div id="buttons">
+            <span index="1" class="on"></span>
+            <span index="2"></span>
+            <span index="3"></span>
+            <span index="4"></span>
+            <span index="5"></span>
+        </div>
+        <a id="prev" href="javascript:;"><</a>
+        <a id="next" href="javascript:;">></a>
+    </section>
+    <script src="js/jquery.1.10.2.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var pic_w = 610;
+        var cont = 1;
+        var auto = null;
+        var isMoving = false;
+
+        if(cont==1){
+            cont=5;
+            $("#ul_img").css("left",-cont*pic_w)
+            console.log("li  __"+cont)
+        }
+        $("#prev").on("click", function () {
+
+            if(!isMoving){
+                cont++;
+                moveTo();
+            }
+        });
+        $("#next").on("click", function () {
+
+            if(!isMoving){
+                cont--;
+                moveTo();
+            }
+        });
+
+        function moveTo(){
+            isMoving = true;
+            var moTo = -pic_w * cont +"px";
+            $("#ul_img").animate({left: moTo},1000,function(){
+                if(cont==9){
+                    cont=4;
+                    $("#ul_img").css("left",-cont*pic_w)
+                }
+                if(cont==1){
+                    cont=5;
+                    $("#ul_img").css("left",-cont*pic_w)
+                }
+                isMoving = false;
+                console.log(cont);
+
+                $('#buttons>span').removeClass('on');
+                $('#buttons').children('[index=' + (cont%5+1) + ']').addClass('on');
+            });
+        }
+        autoPlay();
+        function autoPlay() {
+            auto=setInterval(function () {
+                cont++;
+                moveTo();
+                console.log(cont);
+            },2000);
+        }
+        //清理定时器，并自行开启
+        $("#wrap").hover(function () {
+            clearInterval(auto);
+        }, function () {
+            autoPlay();
+        });
+        //处理小圆点
+        $("#buttons").children().click(function(){
+            cont = $(this).attr("index");
+            $("#ul_img").css("left",-(cont-1)*pic_w);
+            $("#buttons>span").removeClass('on');
+            $('#buttons').children('[index='+cont+']').addClass('on');
+        })
+
+    })
+    </script>
+</body>
+</html>
